@@ -5,8 +5,6 @@ import sys
 import socket
 
 open_ports = []
-min_port = 20
-max_port = 22
 
 def print_header():
     print("==================== BD3PS ====================")
@@ -20,14 +18,21 @@ def print_open():
         print("\t *", x)
 
 def main():
+    min_port = 0
+    max_port = 1023
+
     os.system("cls")
     print_header()
+    if 3 < len(sys.argv):
+        min_port = int(sys.argv[2])
+        max_port = int(sys.argv[3])
+    elif 2 < len(sys.argv):
+        max_port = int(sys.argv[2])
     if 1 < len(sys.argv):
         targetHost = sys.argv[1]
     else:
         targetHost = input("Enter host to scan:")
     targetIP = socket.gethostbyname(targetHost)
-    #scan reserved ports
     for i in range(min_port, max_port):
         os.system("cls")
         print_header()
