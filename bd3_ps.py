@@ -6,13 +6,13 @@ import socket
 
 open_ports = []
 min_port = 20
-max_port = 1025
+max_port = 22
 
 def print_header():
-    print("================ BD3PS ================")
+    print("==================== BD3PS ====================")
 
 def print_footer():
-    print("=======================================")
+    print("===============================================")
 
 def print_open():
     print("Open Ports:")
@@ -31,11 +31,10 @@ def main():
     for i in range(min_port, max_port):
         os.system("cls")
         print_header()
-        print("Begin scan on host:", targetIP)
+        print("Begin scan on host:", targetIP, "from", min_port, "to", max_port)
         print("Scanning port: ", i, "...", sep = "")
         print_open()
         print_footer()
-#        s = socket(AF_INET, SOCK_STREAM)
         s = socket.socket()
         result = s.connect_ex((targetIP, i))
         if 0 == result:
@@ -43,7 +42,7 @@ def main():
         s.close()
     os.system("cls")
     print_header()
-    print("End scan on host:", targetIP)
+    print("End scan on host:", targetIP, "from", min_port, "to", max_port)
     print_open()
     print_footer()
 
