@@ -32,7 +32,7 @@ def main():
         os.system("cls")
         print_header()
         print("Begin scan on host:", targetIP)
-        print("Scanning port:", i, "...")
+        print("Scanning port: ", i, "...", sep = "")
         print_open()
         print_footer()
 #        s = socket(AF_INET, SOCK_STREAM)
@@ -41,8 +41,10 @@ def main():
         if 0 == result:
             open_ports.append(i)
         s.close()
+    os.system("cls")
     print_header()
     print("End scan on host:", targetIP)
     print_open()
+    print_footer()
 
 main()
